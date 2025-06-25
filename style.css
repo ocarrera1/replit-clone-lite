@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+#editor-container {
+  flex: 1;
+  height: 70vh;
+}
+#editor {
+  width: 100%;
+  height: 100%;
+}
+#run-btn {
+  padding: 10px;
+  background: #007acc;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#output {
+  background: #1e1e1e;
+  color: white;
+  padding: 10px;
+  height: 20vh;
+  overflow: auto;
+}
