@@ -1,22 +1,18 @@
 document.getElementById('ai-generate-btn').addEventListener('click', async () => {
   const prompt = document.getElementById('ai-input').value.trim();
   if (!prompt) return alert("Please enter a prompt.");
-  const response = await fetch("https://api.openai.com/v1/completions", {
+
+  // 🔐 Call your own backend instead of OpenAI directly
+  const response = await fetch("https://your-backend.com/api/generate", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${OPENAI_API_KEY}`
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      model: "text-davinci-003",
-      prompt: `Write JavaScript code to: ${prompt}`,
-      max_tokens: 150,
-      temperature: 0.5
-    })
+    body: JSON.stringify({ prompt })
   });
 
   const data = await response.json();
-  const generatedCode = data.choices?.[0]?.text || "// No code generated.";
+  const generatedCode = data.code || "// No code generated.";
   window.editor.setValue(generatedCode.trim());
 });
 
