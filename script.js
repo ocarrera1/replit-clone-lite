@@ -1,9 +1,6 @@
 document.getElementById('ai-generate-btn').addEventListener('click', async () => {
   const prompt = document.getElementById('ai-input').value.trim();
   if (!prompt) return alert("Please enter a prompt.");
-
-  const OPENAI_API_KEY = "sk-..."; // Replace with your OpenAI key
-
   const response = await fetch("https://api.openai.com/v1/completions", {
     method: "POST",
     headers: {
